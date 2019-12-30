@@ -59,16 +59,6 @@
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "/usr/share/nginx/html"
 
-- name: Nginx-Proxy | Set 'docker_volumes_default' variable
-  set_fact:
-    letsencrypt_dns_validation_docker_volumes:
-      - "/opt/nginx-proxy/tmpl/nginx.tmpl:/app/nginx.tmpl"
-
-- name: Nginx-Proxy | Build 'docker_volumes' list variable
-  set_fact:
-    nginx_proxy_docker_volumes: "{{ nginx_proxy_docker_volumes  + letsencrypt_dns_validation_docker_volumes }}"
-  when: cloudflare_is_enabled
-
 - name: Nginx-Proxy | Create and start container
   docker_container:
     name: nginx-proxy

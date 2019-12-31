@@ -1,9 +1,9 @@
 ---
 version: 1.0.0-{build}
 
-branches:
-  except:
-    - master
+# branches:
+#   except:
+#     - master
 
 skip_tags: true
 
